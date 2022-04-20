@@ -1,25 +1,24 @@
-const display=document.getElementById('display')
-const buttons=Array.from(document.getElementsByClassName('button'))
+let display=document.querySelector('.display')
+let keyboards=document.querySelector('.keyboard')
 
-
-buttons.map(button=>{
-    button.addEventListener('click',(e)=>{
-        switch (e.target.innerText) {
-            case 'C':
-                display.innerText=''
+keyboards.addEventListener('click',(e)=>{
+    switch (e.target.innerText){
+        case 'C':
+            display.innerText=''
+            break;
+            case 'CE':
+                if (display.innerText){
+                    display.innerText=display.innerText.slice(0,-1)
+                }
                 break;
-                case '←':
-                    if(display.innerText){
-                        display.innerText=display.innerText.slice(0, -1)}
-                    break;
                 case '=':
-                    try{
-
-                        display.innerText=eval(display.innerText) ;  
-                    } catch{ display.innerText='ERROR!';}
+                try{
+                    display.innerText=eval(display.innerText)
+                }catch{display.innerText='ERROR!'}
                 break;
-           default:
-           display.innerText +=e.target.innerText;
-        }
-    })
+                default:
+                    display.innerText+=e.target.innerText
+
+
+    }
 })
